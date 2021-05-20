@@ -1,0 +1,67 @@
+<app-header></app-header>
+
+<div class="main-wrapper">
+
+  <mat-card class="card">
+
+    <mat-card-content>
+      <mat-card class="card-profile">
+        <div class="card-avatar">
+          <img class="profile-img" src="../../../assets/images/profile-picture.png"/>
+        </div>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+
+
+  <mat-card class="card-info">
+
+    <mat-card-content class="card-body">
+      <mat-card class="info left-card">
+          <p class="text-info">
+            About me
+          </p>
+          <p>
+            {{details?.aboutMe}}
+          </p>
+
+          <p class="text-info">
+            Interests
+          </p>
+          <p>
+            {{details?.interests}}
+          </p>
+      </mat-card>
+
+      <mat-card class="info">
+        <p class="text-info">
+          Personal details
+        </p>
+
+        <table mat-table>
+          <tr>
+              <td mat-cell class="text"> Name: </td>
+              <td mat-cell>{{details?.name}}</td>
+          </tr>
+          <tr>
+              <td mat-cell class="text" > Surname: </td>
+            <td mat-cell>{{details?.surname}}</td>
+          </tr>
+          <tr>
+              <td mat-cell class="text" > Email: </td>
+            <td mat-cell>{{username}}</td>
+          </tr>
+        </table>
+
+
+      </mat-card>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="edit-button text" (click)="edit()">View Details</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>

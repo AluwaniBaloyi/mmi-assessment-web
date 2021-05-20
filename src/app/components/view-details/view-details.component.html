@@ -1,0 +1,74 @@
+<app-header></app-header>
+
+<div class="main-wrapper">
+  <mat-card class="card">
+
+    <form [formGroup]="detailsForm" (submit)="saveAllInformationDetails(detailsForm)">
+      <mat-card-content class="card-body">
+        <mat-card class="info left-card">
+          <mat-card class="img-card">
+            <img class="img" [src]="imgFile">
+          </mat-card>
+
+          <button type="button" mat-raised-button color="primary" class="input-width upload-button" (click)="fileInput.click()">
+            <span>Upload</span>
+            <input #fileInput type="file" formControlName="file" (change)="onImageChange($event)" style="display:none;" />
+          </button>
+
+          <mat-form-field class="input-width">
+            <input  matInput type="text" placeholder="First name" formControlName="name" [ngModel]="informationDetails?.name"  readonly>
+          </mat-form-field>
+
+          <mat-form-field class="input-width">
+            <input matInput type="text" placeholder="Last name" formControlName="surname"  [ngModel]="informationDetails?.surname" readonly>
+          </mat-form-field>
+
+          <mat-form-field class="input-width">
+            <input matInput type="text" placeholder="Email" formControlName="username" [ngModel]="informationDetails?.username" readonly>
+          </mat-form-field>
+
+          <mat-form-field class="input-width" appearance="fill">
+            <textarea  matInput placeholder="Interests" formControlName="interests" [ngModel]="informationDetails?.interests"></textarea>
+          </mat-form-field>
+
+        </mat-card>
+
+        <mat-card class="info">
+
+          <mat-form-field class="input-width">
+            <input  matInput type="text" placeholder="Institution name" formControlName="institutionName" [ngModel]="education?.institutionName">
+          </mat-form-field>
+
+          <mat-form-field class="input-width">
+            <input matInput type="text" placeholder="Qualification" formControlName="qualification" [ngModel]="education?.qualification">
+          </mat-form-field>
+
+          <mat-form-field class="input-width">
+            <input matInput type="date" placeholder="Start date" formControlName="startDate" [ngModel]="education?.startDate">
+          </mat-form-field>
+
+          <mat-form-field class="input-width">
+            <input matInput type="date" placeholder="End date" formControlName="endDate" [ngModel]="education?.endDate">
+          </mat-form-field>
+
+          <mat-form-field class="input-width" appearance="fill">
+            <textarea class="textarea" matInput placeholder="About me" formControlName="aboutMe" [ngModel]="informationDetails.aboutMe"></textarea>
+          </mat-form-field>
+
+        </mat-card>
+
+      </mat-card-content>
+
+      <mat-card-actions class="card-body">
+        <button mat-raised-button color="primary" class="edit-button text" type="submit">Update</button>
+
+        <button mat-raised-button color="primary" class="edit-button text" routerLink="../dashboard" >Back</button>
+      </mat-card-actions>
+    </form>
+
+  </mat-card>
+
+</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>
+

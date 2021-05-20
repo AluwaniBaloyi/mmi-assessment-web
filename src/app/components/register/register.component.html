@@ -1,0 +1,50 @@
+<div class="main-wrapper">
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title class="text">REGISTER</mat-card-title>
+    </mat-card-header>
+
+    <form class="register-form" [formGroup]="registrationForm" (submit)="Registration(registrationForm)">
+
+      <mat-card-content>
+        <mat-form-field class="input-width">
+          <input matInput type="text" placeholder="First name" formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field class="input-width">
+          <input matInput type="text" placeholder="Last name" formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field class="input-width">
+          <input matInput type="email" placeholder="Email" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field class="input-width">
+          <input matInput type="password" placeholder="Password" formControlName="password">
+        </mat-form-field>
+
+
+        <mat-card class="img-card">
+          <img class="img" [src]="imgFile">
+        </mat-card>
+
+        <button type="button" mat-raised-button color="warn" class="register-button" class="input-width img-button" (click)="fileInput.click()">
+          <span>Upload</span>
+          <input #fileInput type="file" formControlName="file" (change)="onImageChange($event)" style="display:none;" />
+        </button>
+
+      </mat-card-content>
+
+        <div class="form-group">
+          <button [disabled]="!registrationForm.valid" mat-raised-button color="primary" class="register-button">
+            Register
+          </button>
+          <a routerLink="../login" class="btn btn-link">Cancel</a>
+        </div>
+
+    </form>
+  </mat-card>
+</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>
